@@ -1,0 +1,62 @@
+import math
+class Complex(object):
+    def __init__(self, real, imaginary):
+        self.real = real
+        self.imaginary = imaginary
+        
+    def get_operator(self, num):
+        o = str()
+        
+        if num >= 0:
+            o = '+'
+        else:
+            o = ''
+            
+        return o
+        
+    def __add__(self, no):
+        a = self.real + no.real
+        b = self.imaginary + no.imaginary
+        o = self.get_operator(b)
+        
+        return "%.2f" % a + o + "%.2f" % b + "i"
+    
+    def __sub__(self, no):
+        a = self.real - no.real
+        b = self.imaginary - no.imaginary
+        
+        o = self.get_operator(b)
+        
+        return "%.2f" % (self.real - no.real) + o + "%.2f" % (self.imaginary - no.imaginary) + "i"
+    
+    def __mul__(self, no):
+        a = self.real * no.real - self.imaginary * no.imaginary
+        b = no.imaginary * self.real + self.imaginary * no.real
+        o = self.get_operator(b)
+        
+        return "%.2f" % a + o + "%.2f" % b + "i"
+    
+    def __truediv__(self, no):
+        a = (self.real * no.real + self.imaginary * no.imaginary) / (no.real**2 + no.imaginary**2)
+        b = (self.imaginary * no.real - self.real * no.imaginary) / (no.real**2 + no.imaginary**2)
+        o = self.get_operator(b)
+        
+        return "%.2f" % a + o + "%.2f" % b + "i"
+    
+    def mod(self):
+        a = (self.real**2 + self.imaginary**2)**0.5
+        return "%.2f" % a + '+' + "0.00i"
+    
+    def __str__(self):
+        if self.imaginary == 0:
+            result = "%.2f+0.00i" % (self.real)
+        elif self.real == 0:
+            if self.imaginary >= 0:
+                result = "0.00+%.2fi" % (self.imaginary)
+            else:
+                result = "0.00-%.2fi" % (abs(self.imaginary))
+        elif self.imaginary > 0:
+            result = "%.2f+%.2fi" % (self.real, self.imaginary)
+        else:
+            result = "%.2f-%.2fi" % (self.real, abs(self.imaginary))
+        return result
