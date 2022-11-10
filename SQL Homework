@@ -1,0 +1,117 @@
+Question 1: SELECT everything from a table
+Answer: SELECT * FROM artists
+
+Question 2: SELECT exactly one column from a table. SELECT more than one but not all columns from a table
+Answer: SELECT name FROM artists
+        SELECT name, bio, grammy_amount FROM artists
+
+Question 3: SELECT everything from the songs table whose id numbers are even and greater than 50, or odd and less than ten.
+Answer: SELECT * from songs WHERE
+(id % 2 = 0 AND id > 50) OR
+(id % 2 = 1 AND id < 10)
+
+Question 4: INSERT ten new records into the User table. They can be real or fictional individuals.
+Answer: 
+INSERT INTO User
+(
+	FirstName,
+  	LastName,
+  	Birthplace,
+  	CreatedAt
+)
+VALUES
+(
+	"Tucker",
+  	"Doherty",
+  	"Kansas, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Kelly",
+  	"Doherty",
+  	"North Carolina, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Matt",
+  	"Doherty",
+  	"New York, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Hattie",
+  	"Doherty",
+  	"Indiana, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Chuck",
+  	"Propst",
+  	"North Carolina, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Luke",
+  	"Petty",
+  	"Texas, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Blake",
+  	"Condron",
+  	"North Carolina, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Spencer",
+  	"Anderson",
+  	"Florida, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Tanner",
+  	"Tweedy",
+  	"North Carolina, United States",
+  	CURRENT_TIMESTAMP
+),
+(
+	"Justin",
+  	"Umberger",
+  	"North Carolina, United States",
+  	CURRENT_TIMESTAMP
+);
+
+Question 5: UPDATE the User table and change some names. When you UPDATE, do not forget to put CURRENT_TIMESTAMP into UpdatedAt. 
+That way, you always know when the last update was.
+Answer: update User
+set FirstName = "Walter",
+	UpdatedAt = CURRENT_TIMESTAMP
+Where UserID = 5
+
+update User
+set FirstName = "Matthew",
+	UpdatedAt = CURRENT_TIMESTAMP
+where UserID = 7
+
+Question 6: Use a TRANSACTION/ROLLBACK window to DELETE everything from the User table.
+Answer: 
+begin TRANSACTION;
+	delete from User;
+    select * from user;
+rollback;
+
+Question 7: For each user in the User table, add a record to the Favorite table, but only INSERT for UserID (the FK), and CreatedAt.
+Answer: 
+INSERT INTO Favorite (userid, createdat)
+SELECT userid, createdat FROM User
+WHERE true
+
+Question 8: Use a TRANSACTION/ROLLBACK window to DELETE everything from the Favorite table WHERE the FavoriteID is odd, or even but greater than 10
+Answer: 
+begin TRANSACTION;
+DELETE FROM Favorite WHERE (favoriteid % 2 = 1) OR (favoriteid % 2 = 0 AND favoriteid > 10);
+    SELECT * FROM Favorite;
+ROLLBACK;
+
+Question 9: Put "SELECT * FROM Favorite;" in the window to make sure you delete only those records you should!
+Answer: SELECT * FROM Favorite
