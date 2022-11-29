@@ -2,6 +2,7 @@ Exercise 1
 List all example files available with the readr library.
 install.packages("readr")
 install.packages("tidyverse")
+install.packages("readxl")
 
 Exercise 2
 Read the mtcars.csv file.
