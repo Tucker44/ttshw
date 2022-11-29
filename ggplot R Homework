@@ -47,7 +47,7 @@ ggplot(EconomistData,aes(x=CPI,y=HDI,color="Region"))+geom_point()
 ggplot(EconomistData,aes(x=CPI,y=HDI,color="Region"))+geom_point()+labs(x = "Corruption Perception Index", y = "Human Development Index")+guides(color = guide_legend(title = "Region of the world"))
 
 3. Modify the color scale to use specific values of your choosing. Hint: see ?scale_color_manual.
-gplot(EconomistData,aes(x=CPI,y=HDI,col=Region))+geom_point(color="red")+
+ggplot(EconomistData,aes(x=CPI,y=HDI,col=Region))+geom_point(color="red")+
 +     scale_x_continuous(name = "Corruption Perception Index") +
 +     scale_y_continuous(name = "Human Development Index") +
 +     scale_color_manual(name = "Region of the world",
