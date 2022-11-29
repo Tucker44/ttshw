@@ -1,0 +1,16 @@
+Exercise 1
+List all example files available with the readr library.
+install.packages("readr")
+install.packages("tidyverse")
+
+Exercise 2
+Read the mtcars.csv file.
+dat <- read.csv("mtcars.csv")
+View(dat)
+
+Exercise 3
+Read the first 10 lines from the mtcars.csv file.
+dat <- read.csv("mtcars.csv",nrows=10)
+
+Exercise 4
+Read the example.log file.
