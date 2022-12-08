@@ -31,6 +31,10 @@ From the data, remove rows containing NA’s. Fit the linear model with the form
 Exercise 4
 For each fit, calculate RMSE.
 
+Came up as NaN
+
+Exercise 5
+For each model, add residuals to the data and plot their distribution. (Hint: use lift_dl().)
 > install.package("ggfortify")
 > library(ggfortify)
 > autoplot(model1)
