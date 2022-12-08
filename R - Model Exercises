@@ -1,0 +1,36 @@
+Exercise 1
+Familiarize yourself with the heights data set provided with the modelr package.
+
+>install.package("modelr")
+>install.package("tidyverse")
+>library(modelr)
+>heights
+
+Exercise 2
+Create a list of formulas for modeling income with:
+*height
+*height * weight
+*linear combination of all variables
+
+> model1 <- lm(income ~ height, data = heights)
+> summary(model1)
+
+> model2 <- lm(income ~ height + weight, data = heights)
+> summary(model2)
+
+> model3 <- lm(income ~ height + weight + age + marital + sex + education + afqt, data = heights)
+> summary(model3)
+
+Exercise 3
+From the data, remove rows containing NA’s. Fit the linear model with the formulas from exercise 2.
+
+> completerecords <- na.omit(heights)
+> model1 <- lm(income ~ height, data = heights)
+> heights
+
+Exercise 4
+For each fit, calculate RMSE.
+
+> install.package("ggfortify")
+> library(ggfortify)
+> autoplot(model1)
